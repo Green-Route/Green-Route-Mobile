@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:green_route/Screens/Carpool/CarPoolHomeScreen.dart';
+import 'package:green_route/Screens/LoginScreen.dart';
 import 'package:green_route/Widgets/BottomDesign.dart';
 import 'package:green_route/Widgets/MyCard.dart';
 class HomeScreen extends StatefulWidget {
@@ -13,9 +14,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Home'),leading: Icon(Icons.home,color: Colors.white,), actions: [Padding(
-        padding: const EdgeInsets.only(right: 15.0),
-        child: Icon(Icons.power_settings_new),
+      appBar: AppBar(title: Text('Home'),leading: Icon(Icons.home,color: Colors.white,), actions: [GestureDetector(
+        onTap: (){
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(right: 15.0),
+          child: Icon(Icons.power_settings_new),
+        ),
       )],),
       body: Stack(
         children: [

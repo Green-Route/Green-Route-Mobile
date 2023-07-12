@@ -64,7 +64,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: CommonButton(s: "Register", bgcolor: Colors.teal, textColor: Colors.white, onPressed: (){}),
+                      child: CommonButton(s: "Register", bgcolor: Colors.teal, textColor: Colors.white, onPressed: (){
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                      }),
                     ),
                     SizedBox(height: 20,),
                     GestureDetector(onTap:(){

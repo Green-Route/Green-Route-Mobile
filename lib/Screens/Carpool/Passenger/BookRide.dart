@@ -185,7 +185,7 @@ class _BookRideState extends State<BookRide> {
                     builder: (BuildContext context) {
                       return AlertDialog(
                         title: Text('Alert'),
-                        content: Text('Are you sure you want to post the Ride?'),
+                        content: Text('Are you sure you want to book the Ride?'),
                         actions: [
                           ElevatedButton(
                             child: Text('Cancel'),
