@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:green_route/Screens/Carpool/Passenger/PassengerHomePage.dart';
 import 'package:green_route/Screens/Carpool/Rider/RiderHomePage.dart';
 import 'package:green_route/Widgets/MyCard.dart';
 
@@ -32,9 +33,14 @@ class _CarPoolHomeState extends State<CarPoolHome> {
                   child: MyCard("Rider", "Are you a rider wanting to post a ride?", Icons.person, Colors.red),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MyCard("Passenger", "Find amazing rides for your destination", Icons.car_rental, Colors.blue),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>PassengerHome()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MyCard("Passenger", "Find amazing rides for your destination", Icons.car_rental, Colors.blue),
+                ),
               ),
 
             ],

@@ -37,8 +37,11 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-        alignment:Alignment.topCenter,child: Image.asset("assets/images/logo2.png"));
+    return Container(
+      height: 100,
+      child: Align(
+          alignment:Alignment.topCenter,child: Image.asset("assets/images/logo2.png")),
+    );
   }
 }
 
