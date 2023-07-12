@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:green_route/Screens/Carpool/Rider/RiderHomePage.dart';
 import 'package:green_route/Widgets/MyCard.dart';
+
+import '../../Widgets/BottomDesign.dart';
 class CarPoolHome extends StatefulWidget {
   const CarPoolHome({Key? key}) : super(key: key);
 
@@ -13,24 +15,30 @@ class _CarPoolHomeState extends State<CarPoolHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Green Route'),),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+      body: Stack(
         children: [
+          LightDesign(),
+          DarkDesign(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Logo(),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>RiderHome()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MyCard("Rider", "Are you a rider wanting to post a ride?", Icons.person, Colors.red),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: MyCard("Passenger", "Find amazing rides for your destination", Icons.car_rental, Colors.blue),
+              ),
 
-          GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>RiderHome()));
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: MyCard("Rider", "Are you a rider wanting to post a ride?", Icons.person, Colors.red),
-            ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: MyCard("Passenger", "Find amazing rides for your destination", Icons.car_rental, Colors.blue),
-          ),
-
         ],
       ),
     );
