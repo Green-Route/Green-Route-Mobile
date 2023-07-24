@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:green_route/Controller/RiderController.dart';
 import 'package:green_route/Screens/LoginScreen.dart';
 
 import '../../../Widgets/BottomDesign.dart';
@@ -16,6 +17,7 @@ class PostRide extends StatefulWidget {
 }
 
 class _PostRideState extends State<PostRide> {
+  RiderController _con = RiderController();
   String? selectedFromCity;
   TextEditingController _seats = TextEditingController();
   TextEditingController _price = TextEditingController();
@@ -186,6 +188,12 @@ class _PostRideState extends State<PostRide> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CommonButton(s: "Post", bgcolor: Colors.teal, textColor: Colors.white, onPressed: (){
+                  print(selectedFromCity);
+                  print(selectedToCity);
+                  print(_seats.text);
+                  print(_price.text);
+                  print(selectedDate!.year.toString()+"/"+selectedDate!.month.toString()+"/"+selectedDate!.day.toString());
+                  print(selectedTime!.hour.toString()+":"+selectedTime!.minute.toString());
 
                   showDialog(
                     context: context,
@@ -197,22 +205,37 @@ class _PostRideState extends State<PostRide> {
                           ElevatedButton(
                             child: Text('Cancel'),
                             onPressed: () {
-                              Navigator.of(context).pop();
+                              Navigator.pop(context);
                             },
                           ),
                           ElevatedButton(
                             child: Text('OK'),
                             onPressed: () {
                               // Perform the desired action here
-                              Navigator.of(context).pop();
+                              _con.postRide(context,
+                                  from: selectedFromCity!,
+                                  to: selectedToCity!,
+                                  date: selectedDate!.year.toString()+"/"+selectedDate!.month.toString()+"/"+selectedDate!.day.toString(),
+                                  time: selectedTime!.hour.toString()+":"+selectedTime!.minute.toString(),
+                                  price: _price.text,
+                                  seat: _seats.text)!.then((value) {
+                                    if(value){
+                                      Navigator.pop(context);
+                                      Navigator.pop(context);
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Posted Successfully"),backgroundColor: Colors.green,));
+
+                                    }
+                                    else{
+                                      Navigator.pop(context);
+                                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Something went wrong... try again later"),backgroundColor: Colors.red,));
+                                    }
+                              });
                             },
                           ),
                         ],
                       );
                     },
-                  ).then((value){
-                    Navigator.pop(context);
-                  });
+                  );
                 }),
               ),
               SizedBox(height: 20,),

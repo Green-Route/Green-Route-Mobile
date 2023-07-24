@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:green_route/Controller/AuthController.dart';
 import 'package:green_route/Screens/LoginScreen.dart';
 import 'package:green_route/Screens/SignUpScreen.dart';
 
@@ -15,6 +16,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  AuthController _con = AuthController();
   TextEditingController _email = TextEditingController();
   TextEditingController _firstname = TextEditingController();
   TextEditingController _lastname = TextEditingController();
@@ -65,7 +67,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: CommonButton(s: "Register", bgcolor: Colors.teal, textColor: Colors.white, onPressed: (){
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
+                       print(_firstname.text);
+                        _con.register(context,firstName: _firstname.text,lastName: _lastname.text, mobile: _mobile.text,email: _email.text,password: _password.text);
                       }),
                     ),
                     SizedBox(height: 20,),

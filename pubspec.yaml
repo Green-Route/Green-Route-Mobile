@@ -38,6 +38,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^4.0.4
   google_maps_flutter: ^2.3.1
+  google_maps_webservice: ^0.0.20-nullsafety.5
+  shared_preferences: ^2.2.0
+
+
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +53,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.6
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

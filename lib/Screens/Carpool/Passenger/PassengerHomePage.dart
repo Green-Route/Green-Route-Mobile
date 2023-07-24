@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:green_route/Screens/Carpool/Passenger/BookRide.dart';
+import 'package:green_route/Screens/Carpool/Passenger/SearchRide.dart';
 import 'package:green_route/Screens/Carpool/Rider/GetRides.dart';
 import 'package:green_route/Screens/Carpool/Rider/PostRide.dart';
 import 'package:green_route/Widgets/MyCard.dart';
@@ -27,7 +27,7 @@ class _PassengerHomeState extends State<PassengerHome> {
               Logo(),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>BookRide()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchRide()));
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -36,8 +36,7 @@ class _PassengerHomeState extends State<PassengerHome> {
               ),
               GestureDetector(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>GetMyRides()));
-                },
+                  },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: MyCard("Get My Rides", "View your rides", Icons.notification_add, Colors.blue),

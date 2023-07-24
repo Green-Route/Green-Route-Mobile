@@ -5,6 +5,7 @@ import 'package:green_route/Screens/SignUpScreen.dart';
 import 'package:green_route/Widgets/BottomDesign.dart';
 import 'package:green_route/Widgets/CommonButton.dart';
 
+import '../Controller/AuthController.dart';
 import '../Widgets/CommonTextField.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,6 +18,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
+  AuthController _con = AuthController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,14 +38,14 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: CommonTextField("password", "password", _password),
+                child: CommonTextField("password", "password", _password, obscure: true,),
               ),
 
               SizedBox(height: 10,),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CommonButton(s: "Login", bgcolor: Colors.teal, textColor: Colors.white, onPressed: (){
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>HomeScreen()));
+                  _con.login(context, _email.text, _password.text);
                 }),
               ),
               SizedBox(height: 10,),

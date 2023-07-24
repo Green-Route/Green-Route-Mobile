@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:green_route/Controller/PassengerController.dart';
+import 'package:green_route/Screens/Carpool/Passenger/GetRides.dart';
 import 'package:green_route/Screens/LoginScreen.dart';
 
 import '../../../Widgets/BottomDesign.dart';
@@ -8,19 +10,20 @@ import '../../../Widgets/CommonTextField.dart';
 
 
 
-class BookRide extends StatefulWidget {
-  const BookRide({Key? key}) : super(key: key);
+class SearchRide extends StatefulWidget {
+  const SearchRide({Key? key}) : super(key: key);
 
   @override
-  State<BookRide> createState() => _BookRideState();
+  State<SearchRide> createState() => _SearchRideState();
 }
 
-class _BookRideState extends State<BookRide> {
+class _SearchRideState extends State<SearchRide> {
+
   String? selectedFromCity;
   TextEditingController _seats = TextEditingController();
   TextEditingController _price = TextEditingController();
   String? selectedToCity;
-  String? selectedProvince;
+  String selectedProvince = "Ontario";
   List<String> cities = [
     "Windsor",
     "Toronto",
@@ -79,6 +82,13 @@ class _BookRideState extends State<BookRide> {
       });
     }
   }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,6 +104,7 @@ class _BookRideState extends State<BookRide> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: DropdownButtonFormField<String>(
+
                   decoration: InputDecoration(
                     labelText: 'Select Province',
                     border: OutlineInputBorder(),
@@ -105,11 +116,7 @@ class _BookRideState extends State<BookRide> {
                       child: Text(province),
                     );
                   }).toList(),
-                  onChanged: (String? newValue){
-                    setState(() {
-                      selectedProvince = newValue!;
-                    });
-                  },
+                  onChanged: null,
                 ),
               ),
 
@@ -171,41 +178,14 @@ class _BookRideState extends State<BookRide> {
                         child: Text(selectedDate.toString()=="null"?"Select Date":selectedDate.toString().substring(0,10)),
                       ),
                       SizedBox(height: 16.0),
-                      ElevatedButton(
-                        onPressed: () => _selectTime(context),
-                        child: Text(selectedTime.toString()=="null"?"Select Time":"${selectedTime!.hour.toString()}:${selectedTime!.minute.toString()}"),
-                      ),]),
+                      ]),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CommonButton(s: "Post", bgcolor: Colors.teal, textColor: Colors.white, onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>GetRides(from: selectedFromCity!, to: selectedToCity!, date: selectedDate!.year.toString()+"/"+selectedDate!.month.toString()+"/"+selectedDate!.day.toString())));
 
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text('Alert'),
-                        content: Text('Are you sure you want to book the Ride?'),
-                        actions: [
-                          ElevatedButton(
-                            child: Text('Cancel'),
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                          ElevatedButton(
-                            child: Text('OK'),
-                            onPressed: () {
-                              // Perform the desired action here
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                  ).then((value){
-                    Navigator.pop(context);
-                  });
+
                 }),
               ),
               SizedBox(height: 20,),

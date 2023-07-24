@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:green_route/Screens/Carpool/CarPoolHomeScreen.dart';
+import 'package:green_route/Screens/EV/EvScreen.dart';
 import 'package:green_route/Screens/LoginScreen.dart';
+import 'package:green_route/Screens/Transit/TransitHome.dart';
 import 'package:green_route/Widgets/BottomDesign.dart';
 import 'package:green_route/Widgets/MyCard.dart';
 class HomeScreen extends StatefulWidget {
@@ -31,13 +33,23 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Logo(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MyCard("Ev Station", "Find the nearest EV-Stations near you", Icons.ev_station, Colors.blueAccent),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>EvHomeScreen()));
+                },
+                child : Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MyCard("Ev Station", "Find the nearest EV-Stations near you", Icons.ev_station, Colors.blueAccent),
+                ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MyCard("Transit", "Find the best bus routes for your destination", Icons.directions_transit, Colors.green),
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>TransitHomeScreen()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MyCard("Transit", "Find the best bus routes for your destination", Icons.directions_transit, Colors.green),
+                ),
               ),
               GestureDetector(
                 onTap: (){

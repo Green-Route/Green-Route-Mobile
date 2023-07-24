@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class EvHomeScreen extends StatefulWidget {
+class TransitHomeScreen extends StatefulWidget {
   @override
-  _EvHomeScreenState createState() => _EvHomeScreenState();
+  _TransitHomeScreenState createState() => _TransitHomeScreenState();
 }
 
-class _EvHomeScreenState extends State<EvHomeScreen> {
+class _TransitHomeScreenState extends State<TransitHomeScreen> {
   final Set<Marker> _markers = {};
   GoogleMapController? _mapController;
   LatLng _selectedLocation = LatLng(42.31772, -83.04309); // Default location

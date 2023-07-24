@@ -1,42 +1,46 @@
 
 import 'package:flutter/material.dart';
+import 'package:green_route/Controller/PassengerController.dart';
 import 'package:green_route/Controller/RiderController.dart';
+import 'package:green_route/Models/Carpool/PassengerGetRide.dart';
 import 'package:green_route/Screens/Carpool/Rider/MyRideDetail.dart';
 import '../../../Models/Carpool/PostedRide.dart';
 import '../../../Widgets/BottomDesign.dart';
 
-class GetMyRides extends StatefulWidget {
-  const GetMyRides({Key? key}) : super(key: key);
+class GetRides extends StatefulWidget {
+  final String from;
+  final String to;
+  final String date;
+  const GetRides({Key? key, required this.from, required this.to, required this.date}) : super(key: key);
 
   @override
-  State<GetMyRides> createState() => _GetMyRidesState();
+  State<GetRides> createState() => _GetRidesState();
 }
 
-class _GetMyRidesState extends State<GetMyRides> {
+class _GetRidesState extends State<GetRides> {
   bool isLoading = true;
-  RiderController _con = RiderController();
-
+  PassengerController _controller = PassengerController();
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    _con.getRiderRides(context).then((value) {
-      setState(() {
-        if(value!=null){
-        _con.postedRide=value;
-        isLoading = false;
-        }
-        else{
-          _con.postedRide.rides=[];
+    _controller.getRides(from: widget.from, to: widget.to, date: widget.date).then((value) {
+      if(_controller.response == null){
+        setState(() {
+          _controller.response!.data = [];
           isLoading = false;
-        }
-      });
+        });
+      }else{
+        setState(() {
+          isLoading =false;
+        });
+      }
     });
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('My Rides'),),
+      appBar: AppBar(title: Text('Rides'),),
       body: Stack(
         children: [
           LightDesign(),
@@ -46,16 +50,15 @@ class _GetMyRidesState extends State<GetMyRides> {
             children: [
               SizedBox(height: 100,),
               Expanded(
-                child: (_con.postedRide.rides.length==0)?Center(child: Text("No Posted Rides"),):
-                ListView.builder(
-                  itemCount: _con.postedRide.rides.length,
+                child: ( _controller.response!.data.length==0)?Center(child: Text("No Rides Available"),):ListView.builder(
+                  itemCount: _controller.response!.data.length,
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     itemBuilder: (context,index){
-                    Iterable<Ride> rides = _con.postedRide.rides.reversed;
+                    Iterable<Datum> rides = _controller.response!.data.reversed;
                   return  GestureDetector(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>MyRideDetail()));
+
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
