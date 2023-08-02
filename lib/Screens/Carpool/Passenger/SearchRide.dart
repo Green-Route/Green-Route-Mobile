@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:green_route/Controller/PassengerController.dart';
-import 'package:green_route/Screens/Carpool/Passenger/GetRides.dart';
-import 'package:green_route/Screens/LoginScreen.dart';
+import 'package:green_route_mobile/Controller/PassengerController.dart';
+import 'package:green_route_mobile/Screens/Carpool/Passenger/GetRides.dart';
+import 'package:green_route_mobile/Screens/LoginScreen.dart';
 
 import '../../../Widgets/BottomDesign.dart';
 import '../../../Widgets/CommonButton.dart';

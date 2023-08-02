@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:green_route/Screens/HomeScreen.dart';
-import 'package:green_route/Screens/SignUpScreen.dart';
-import 'package:green_route/Widgets/BottomDesign.dart';
-import 'package:green_route/Widgets/CommonButton.dart';
+import 'package:green_route_mobile/Screens/HomeScreen.dart';
+import 'package:green_route_mobile/Screens/SignUpScreen.dart';
+import 'package:green_route_mobile/Widgets/BottomDesign.dart';
+import 'package:green_route_mobile/Widgets/CommonButton.dart';
 
 import '../Controller/AuthController.dart';
 import '../Widgets/CommonTextField.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:green_route/Widgets/BottomDesign.dart';
+import 'package:green_route_mobile/Widgets/BottomDesign.dart';
 class MyRideDetail extends StatefulWidget {
   const MyRideDetail({Key? key}) : super(key: key);
 

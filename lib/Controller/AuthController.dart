@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:green_route/Models/LoginModel.dart';
-import 'package:green_route/Repo/APIs/authenticationAPI.dart';
-import 'package:green_route/Screens/HomeScreen.dart';
-import 'package:green_route/Screens/LoginScreen.dart';
+import 'package:green_route_mobile/Models/LoginModel.dart';
+import 'package:green_route_mobile/Repo/APIs/authenticationAPI.dart';
+import 'package:green_route_mobile/Screens/HomeScreen.dart';
+import 'package:green_route_mobile/Screens/LoginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController{

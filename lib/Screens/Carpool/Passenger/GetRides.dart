@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:green_route/Controller/PassengerController.dart';
-import 'package:green_route/Controller/RiderController.dart';
-import 'package:green_route/Models/Carpool/PassengerGetRide.dart';
-import 'package:green_route/Screens/Carpool/Rider/MyRideDetail.dart';
+import 'package:green_route_mobile/Controller/PassengerController.dart';
+import 'package:green_route_mobile/Controller/RiderController.dart';
+import 'package:green_route_mobile/Models/Carpool/PassengerGetRide.dart';
+import 'package:green_route_mobile/Screens/Carpool/Rider/MyRideDetail.dart';
 import '../../../Models/Carpool/PostedRide.dart';
 import '../../../Widgets/BottomDesign.dart';
 
@@ -20,6 +20,7 @@ class GetRides extends StatefulWidget {
 class _GetRidesState extends State<GetRides> {
   bool isLoading = true;
   PassengerController _controller = PassengerController();
+
   @override
   void initState() {
     // TODO: implement initState
@@ -87,7 +88,34 @@ class _GetRidesState extends State<GetRides> {
                             ListTile(
                               dense: true,
                               leading: Icon(Icons.alarm),
-                              title: Text("Time: "+rides.elementAt(index).time),),
+                              title: Text("Time: "+rides.elementAt(index).time),
+                              trailing: (!rides.elementAt(index).passengers.contains(_controller.userId))?ElevatedButton(onPressed: (){
+
+                                _controller.passengerBookRides(rides.elementAt(index).id).then((value) {
+                                  if(value){
+                                    showDialog(context: context, builder: (context)=>AlertDialog(
+                                      content: Text("Booking Successful"),
+                                      actions: [ElevatedButton(onPressed: (){
+                                        Navigator.pop(context);
+                                      }, child: Text("Ok"))],
+                                    )).then((value) {
+                                      Navigator.pop(context);
+                                    });
+                                  }else{
+                                    showDialog(context: context, builder: (context)=>AlertDialog(
+                                      content: Text("Cannot Book Right Now... try again later"),
+                                      actions: [ElevatedButton(onPressed: (){
+                                        Navigator.pop(context);
+                                      }, child: Text("Ok"))],
+                                    )).then((value) {
+                                      Navigator.pop(context);
+                                    });
+                                  }
+                                });
+
+                              }, child: Text("Book")):Container(
+                                child: Text("Booked"),
+                              ),),
                           ],
                         ),
                       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:green_route/Screens/Carpool/Passenger/PassengerHomePage.dart';
-import 'package:green_route/Screens/Carpool/Rider/RiderHomePage.dart';
-import 'package:green_route/Widgets/MyCard.dart';
+import 'package:green_route_mobile/Screens/Carpool/Passenger/PassengerHomePage.dart';
+import 'package:green_route_mobile/Screens/Carpool/Rider/RiderHomePage.dart';
+import 'package:green_route_mobile/Widgets/MyCard.dart';
 
 import '../../Widgets/BottomDesign.dart';
 class CarPoolHome extends StatefulWidget {

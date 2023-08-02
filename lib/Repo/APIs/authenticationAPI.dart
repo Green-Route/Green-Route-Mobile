@@ -1,14 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
-import 'package:green_route/Models/LoginModel.dart';
-import 'package:green_route/utils/constants.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:green_route_mobile/Models/LoginModel.dart';
+import 'package:green_route_mobile/utils/constants.dart';
 import 'package:http/http.dart' as http;
 
 
 Future<Login?> userLogin(BuildContext context, String email, String password) async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
   var response = await http.post(Uri.parse(base_url+login), body: {
     'email': email,
     'password': password

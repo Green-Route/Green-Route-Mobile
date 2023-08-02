@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:green_route/Screens/Carpool/CarPoolHomeScreen.dart';
-import 'package:green_route/Screens/EV/EvScreen.dart';
-import 'package:green_route/Screens/LoginScreen.dart';
-import 'package:green_route/Screens/Transit/TransitHome.dart';
-import 'package:green_route/Widgets/BottomDesign.dart';
-import 'package:green_route/Widgets/MyCard.dart';
+import 'package:green_route_mobile/Screens/Carpool/CarPoolHomeScreen.dart';
+import 'package:green_route_mobile/Screens/EV/EvScreen.dart';
+import 'package:green_route_mobile/Screens/LoginScreen.dart';
+import 'package:green_route_mobile/Screens/Transit/TransitHome.dart';
+import 'package:green_route_mobile/Widgets/BottomDesign.dart';
+import 'package:green_route_mobile/Widgets/MyCard.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:green_route/Controller/RiderController.dart';
-import 'package:green_route/Screens/LoginScreen.dart';
+import 'package:green_route_mobile/Controller/RiderController.dart';
+import 'package:green_route_mobile/Screens/LoginScreen.dart';
 
 import '../../../Widgets/BottomDesign.dart';
 import '../../../Widgets/CommonButton.dart';
@@ -22,7 +22,7 @@ class _PostRideState extends State<PostRide> {
   TextEditingController _seats = TextEditingController();
   TextEditingController _price = TextEditingController();
   String? selectedToCity;
-  String? selectedProvince;
+  String selectedProvince = "Ontario";
   List<String> cities = [
     "Windsor",
     "Toronto",
@@ -107,11 +107,7 @@ class _PostRideState extends State<PostRide> {
                       child: Text(province),
                     );
                   }).toList(),
-                  onChanged: (String? newValue){
-                    setState(() {
-                      selectedProvince = newValue!;
-                    });
-                  },
+                  onChanged: null,
                 ),
               ),
 

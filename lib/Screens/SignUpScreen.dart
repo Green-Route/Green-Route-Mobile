@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:green_route/Controller/AuthController.dart';
-import 'package:green_route/Screens/LoginScreen.dart';
-import 'package:green_route/Screens/SignUpScreen.dart';
+import 'package:green_route_mobile/Controller/AuthController.dart';
+import 'package:green_route_mobile/Screens/LoginScreen.dart';
+import 'package:green_route_mobile/Screens/SignUpScreen.dart';
 
 import '../Widgets/BottomDesign.dart';
 import '../Widgets/CommonButton.dart';

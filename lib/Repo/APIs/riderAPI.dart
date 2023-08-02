@@ -54,4 +54,18 @@ Future<PostedRide?> riderPostedRide() async{
     return null;
   }
 }
+Future<bool> deleteRiderRideAPI(String rideId) async{
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  var token = preferences.get("token").toString();
+  var response = await http.get(Uri.parse(base_url+rider_delete_ride(rideId)), headers: {
+    'Authorization': 'Bearer $token',
+  });
+  print(response.statusCode);
+  if(response.statusCode>=200&&response.statusCode<300){
+    print(response.body);
+    return true;}
+  else{
+    return false;
+  }
+}
 

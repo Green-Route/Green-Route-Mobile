@@ -1,6 +1,6 @@
 {
-    "name": "green_route",
-    "short_name": "green_route",
+    "name": "green_route_mobile",
+    "short_name": "green_route_mobile",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

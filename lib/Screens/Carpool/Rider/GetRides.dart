@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:green_route/Controller/RiderController.dart';
-import 'package:green_route/Screens/Carpool/Rider/MyRideDetail.dart';
+import 'package:green_route_mobile/Controller/RiderController.dart';
+import 'package:green_route_mobile/Screens/Carpool/Rider/MyRideDetail.dart';
 import '../../../Models/Carpool/PostedRide.dart';
 import '../../../Widgets/BottomDesign.dart';
 
@@ -55,8 +55,7 @@ class _GetMyRidesState extends State<GetMyRides> {
                     Iterable<Ride> rides = _con.postedRide.rides.reversed;
                   return  GestureDetector(
                     onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>MyRideDetail()));
-                    },
+                        },
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
@@ -84,7 +83,39 @@ class _GetMyRidesState extends State<GetMyRides> {
                             ListTile(
                               dense: true,
                               leading: Icon(Icons.alarm),
-                              title: Text("Time: "+rides.elementAt(index).time),),
+                              title: Text("Time: "+rides.elementAt(index).time),
+                            trailing: ElevatedButton(onPressed: (){
+                              _con.deleteRiderRide(context, rides.elementAt(index).id).then((value) {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                                if(value){
+                                  setState(() {
+                                    isLoading = false;
+                                    _con.getRiderRides(context).then((value) {
+                                      setState(() {
+                                        if(value!=null){
+                                          _con.postedRide=value;
+                                          isLoading = false;
+                                        }
+                                        else{
+                                          _con.postedRide.rides=[];
+                                          isLoading = false;
+                                        }
+                                      });
+                                    });
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Successful"),backgroundColor: Colors.green,));
+
+                                  });
+                                }
+                                else{
+                                  setState(() {
+                                    isLoading = false;
+                                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Unsuccessful ... Try again later"),backgroundColor: Colors.red,));
+                                  });
+                                }
+                              });
+                            }, child: Text("Delete"))),
                           ],
                         ),
                       ),

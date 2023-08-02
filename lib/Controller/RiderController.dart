@@ -1,8 +1,8 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:green_route/Models/Carpool/PostedRide.dart';
-import 'package:green_route/Repo/APIs/riderAPI.dart';
+import 'package:green_route_mobile/Models/Carpool/PostedRide.dart';
+import 'package:green_route_mobile/Repo/APIs/riderAPI.dart';
 
 class RiderController{
   late PostedRide postedRide;
@@ -29,5 +29,9 @@ return false;
       return response;
     }
     return null;
+  }
+  Future<bool> deleteRiderRide(BuildContext context, String RideID) async{
+    bool response = await deleteRiderRideAPI(RideID);
+    return response;
   }
 }

@@ -9,12 +9,16 @@ class EvHomeScreen extends StatefulWidget {
 class _EvHomeScreenState extends State<EvHomeScreen> {
   final Set<Marker> _markers = {};
   GoogleMapController? _mapController;
-  LatLng _selectedLocation = LatLng(42.31772, -83.04309); // Default location
+  LatLng _selectedLocation = LatLng(42.306678989398385, -83.0649009190057); // Default location
 
   List<LatLng> _locations = [
-    LatLng(37.7749, -122.4194), // San Francisco
-    LatLng(34.0522, -118.2437), // Los Angeles
-    LatLng(41.8781, -87.6298),  // Chicago
+    LatLng(42.320097225916875, -83.03935647103404),
+    LatLng(42.31171958144831, -83.03214669355964),
+    LatLng(42.32111262218964, -83.03454995271777),
+    LatLng(42.31552773991512, -83.0211603659796),
+    LatLng(42.31425837936192, -83.00914407018892),
+    LatLng(42.30207121541498, -83.01017403839955),
+    LatLng(42.27895990720015, -83.00777077924144)
   ];
 
   @override
@@ -22,7 +26,7 @@ class _EvHomeScreenState extends State<EvHomeScreen> {
     return Scaffold(
       appBar: AppBar(
 
-        title: Text('Multiple Locations on Google Maps'),
+        title: Text('Ev Stations Nearby'),
       ),
       body: GoogleMap(
         initialCameraPosition: CameraPosition(

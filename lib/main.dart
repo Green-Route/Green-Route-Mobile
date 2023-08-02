@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:green_route/Screens/LoginScreen.dart';
+import 'package:green_route_mobile/Screens/LoginScreen.dart';
 
 void main() {
   runApp(const MyApp());
